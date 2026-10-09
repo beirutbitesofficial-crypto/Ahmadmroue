@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mroue Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f7f3">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mroue Admin">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="/admin.webmanifest">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500&family=Lexend:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="stylesheet" href="/assets/admin.css">
+</head>
+<body>
+<!-- PIN -->
+<section class="login" id="login" hidden>
+  <img class="login-mark" src="/brand/mark.png" alt="" width="439" height="450">
+  <h1>Dr. Ahmad Mroue</h1>
+  <p>Appointments · Admin</p>
+  <div class="dots" id="dots" aria-live="polite"></div>
+  <p class="login-err" id="loginErr"></p>
+  <div class="pad" id="pad"></div>
+</section>
+
+<!-- App -->
+<div class="app" id="app" hidden>
+  <header class="top">
+    <img class="top-mark" src="/brand/mark.png" alt="" width="439" height="450">
+    <div class="top-t"><b>Appointments</b><span id="todayLbl"></span></div>
+    <button class="icon-btn" id="bellBtn" type="button" aria-label="Booking alerts"></button>
+    <button class="icon-btn" id="gearBtn" type="button" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+  </header>
+
+  <div class="setup" id="setup" hidden></div>
+
+  <div class="seg" role="tablist">
+    <button role="tab" data-view="day" aria-selected="true">Day</button>
+    <button role="tab" data-view="upcoming" aria-selected="false">Upcoming <i id="pendingBadge" hidden></i></button>
+  </div>
+
+  <main id="view"></main>
+</div>
+
+<!-- bottom sheet (settings / add booking / confirm) -->
+<div class="scrim" id="scrim" hidden></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden></section>
+<div class="toast" id="toast" role="status"></div>
+<script type="module" src="/assets/admin.js"></script>
+</body>
+</html>

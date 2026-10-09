@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book an appointment — Dr. Ahmad Mroue</title>
+<meta name="description" content="Book a consultation with Dr. Ahmad Mroue, Gastroenterologist & Endoscopy Specialist. Pick a time and get your confirmation on WhatsApp.">
+<meta name="theme-color" content="#f6f7f3">
+<meta property="og:title" content="Dr. Ahmad Mroue — Book an appointment">
+<meta property="og:description" content="Gastroenterologist & Endoscopy Specialist. Pick a time and get your confirmation on WhatsApp.">
+<meta property="og:image" content="/brand/logo-full.png">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Lexend:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="stylesheet" href="/assets/booking.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="brand">
+    <div class="brand-top">
+      <img class="mark" src="/brand/mark.png" alt="" width="439" height="450">
+      <div>
+        <p class="doc" data-t="docName">Dr. Ahmad Mroue</p>
+        <p class="title" data-t="docTitle">Gastroenterologist &amp; Endoscopy Specialist</p>
+      </div>
+      <button class="lang" id="lang" type="button" aria-label="Change language">عربي</button>
+    </div>
+    <div class="brand-info">
+      <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><span data-t="hours">Clinic hours</span> · <b id="hours">3:00 – 4:00 PM</b></span></div>
+      <div class="info-row" id="addrRow" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="addr"></span></div>
+      <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/><path d="M9 10.5c.5 2 2 3.5 4.5 4.5l1.2-1.2 2 1-.6 1.7c-3.5.3-7.7-3.5-7.8-7.4L10 8.6l1 2z"/></svg><span data-t="waNote">Confirmation on WhatsApp</span></div>
+    </div>
+  </aside>
+
+  <main class="flow">
+    <header class="flow-head">
+      <h1 data-t="h1">Book an appointment</h1>
+      <ol class="steps" id="steps">
+        <li data-step="1"><b>01</b><span data-t="s1">Visit</span></li>
+        <li data-step="2"><b>02</b><span data-t="s2">Time</span></li>
+        <li data-step="3"><b>03</b><span data-t="s3">Details</span></li>
+      </ol>
+    </header>
+
+    <!-- 1 · visit type -->
+    <section class="panel" data-panel="1">
+      <h2 class="q" data-t="q1">What is the visit for?</h2>
+      <div class="types" id="types" role="radiogroup"></div>
+    </section>
+
+    <!-- 2 · day + time -->
+    <section class="panel" data-panel="2" hidden>
+      <button class="back" type="button" data-go="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg><span data-t="back">Back</span></button>
+      <h2 class="q" data-t="q2">Choose a day</h2>
+      <div class="days-wrap"><div class="days" id="days" role="listbox"></div></div>
+      <h2 class="q q-time"><span data-t="q3">Choose a time</span> <span class="q-day" id="dayLabel"></span></h2>
+      <div class="times" id="times"></div>
+      <p class="hint" id="noDays" hidden data-t="noDays">No free times in the next few weeks. Please message the clinic.</p>
+    </section>
+
+    <!-- 3 · details -->
+    <section class="panel" data-panel="3" hidden>
+      <button class="back" type="button" data-go="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg><span data-t="back">Back</span></button>
+      <div class="summary" id="summary"></div>
+      <form id="form" novalidate>
+        <label class="field"><span data-t="name">Full name</span><input class="input" name="name" autocomplete="name" required maxlength="60"></label>
+        <label class="field"><span data-t="phone">Phone (WhatsApp)</span><input class="input" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="03 123 456" required dir="ltr"></label>
+        <label class="field"><span><span data-t="note">Anything the doctor should know?</span> <i data-t="optional">(optional)</i></span><textarea class="input" name="note" maxlength="300"></textarea></label>
+        <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+        <p class="err" id="err" role="alert" hidden></p>
+        <button class="btn btn-primary btn-block" id="submit" type="submit" data-t="submit">Request appointment</button>
+        <p class="fine" data-t="fine">The clinic will confirm your appointment on WhatsApp.</p>
+      </form>
+    </section>
+
+    <!-- done -->
+    <section class="panel done" data-panel="4" hidden>
+      <div class="tick"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+      <h2 class="done-h" data-t="doneH">Request sent</h2>
+      <p class="done-p" data-t="doneP">The clinic will confirm on WhatsApp shortly.</p>
+      <div class="ticket" id="ticket"></div>
+      <div class="done-actions">
+        <button class="btn btn-ghost" id="ics" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span data-t="cal">Add to calendar</span></button>
+        <a class="btn btn-wa" id="waClinic" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 5 5 0 0 0 1 2.6 11.3 11.3 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg><span data-t="waClinic">Message the clinic</span></a>
+        <a class="btn btn-ghost" id="maps" target="_blank" rel="noopener" hidden><span data-t="maps">Directions</span></a>
+        <button class="btn-text" type="button" id="again" data-t="again">Book another appointment</button>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script type="module" src="/assets/booking.js"></script>
+</body>
+</html>
