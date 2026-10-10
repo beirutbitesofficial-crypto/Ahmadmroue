@@ -373,7 +373,12 @@ async function pushState() {
   return sub && Notification.permission === 'granted' ? 'on' : 'off';
 }
 
-const b64 = s => { const p = '='.repeat((4 - s.length % 4) % 4); const raw = atob((s + p).replace(/-/g, '+').replace(/_/g, '/')); return Uint8Array.from(raw, c => c.charCodeAt(0)); };
+const b64 = key => {
+  const s = String(key || '').replace(/[^A-Za-z0-9_+/-]/g, '').replace(/-/g, '+').replace(/_/g, '/');
+  const out = Uint8Array.from(atob(s + '='.repeat((4 - s.length % 4) % 4)), c => c.charCodeAt(0));
+  if (out.length !== 65) throw new Error('The push key on the server looks wrong — re-paste NEXT_PUBLIC_VAPID_PUBLIC_KEY in Vercel and redeploy.');
+  return out;
+};
 
 async function enablePush() {
   try {
